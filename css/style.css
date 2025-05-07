@@ -16,6 +16,9 @@
     --color-10: #eb2247;
     --color-11: #ffbf00;
     --color-12: #0ce700;
+
+    /* Sombra */
+    --shadow: 0 0 1rem 0.1rem var(--color-08);
 }
 
 /* Reset */
@@ -38,6 +41,7 @@ body {
 
 nav {
     position: fixed;
+    z-index: 100;
     top: 0;
     padding: 1rem 4rem;
     background-color: var(--color-08);
@@ -73,6 +77,68 @@ main {
     min-height: 100vh;
     padding: 2rem 4rem;
 }
+
+#sectionProducts {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.product-card {
+    background-color: var(--color-01    );
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: all 0.3s;
+
+    &:hover {
+        transform: scale(1.05);
+        /* box-shadow: var(--shadow); */
+        box-shadow: 0 0 1rem 0.1rem var(--color-08);
+    }
+}
+
+.product-img {
+    display: flex;
+    width: 100%;
+
+    img {
+        width: 100%;
+    }
+}
+
+.product-info {
+    padding: 1rem;
+
+    p {
+        margin: 1rem 0;
+    }
+}
+
+.product-action {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+        padding: 0.5rem 1rem;
+        background-color: var(--color-11);
+        border: none;
+        cursor: pointer;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        transition: all 0.3s;
+
+        &:hover {
+            filter: brightness(1.1);
+        }
+    }
+}
+
+
+
+
+
+
 
 footer {
     background-color: var(--color-07);
