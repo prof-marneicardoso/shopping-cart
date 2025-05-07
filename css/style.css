@@ -35,3 +35,51 @@ body {
     background-color: var(--color-02);
     color: var(--color-07);
 }
+
+nav {
+    position: fixed;
+    top: 0;
+    padding: 1rem 4rem;
+    background-color: var(--color-08);
+    width: 100%;
+
+    ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.3rem;
+
+        a {
+            color: var(--color-01);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
+            font-weight: 600;
+            letter-spacing: 0.1rem;
+
+            &:hover {
+                color: var(--color-11);
+            }
+        }
+    }
+}
+
+header {
+    background-color: var(--color-03);
+    padding: 6rem 4rem 3rem;
+}
+
+main {
+    min-height: 100vh;
+    padding: 2rem 4rem;
+}
+
+footer {
+    background-color: var(--color-07);
+    color: var(--color-04);
+    min-height: 16rem;
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
