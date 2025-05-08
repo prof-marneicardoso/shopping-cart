@@ -1,54 +1,11 @@
 
-// Lista de Produtos (em JSON)
-
-// const productList =
-// [
-//     {
-//        "id": 1,
-//        "image": "https://cdn.pixabay.com/photo/2020/04/19/02/20/control-5061603_1280.jpg",
-//        "name": "Xbox Series S",
-//        "description": "Vero sequi laboriosam recusandae facere debitis beatae obcaecati.",
-//        "price": "R$ 23.99",
-//        "createdAt": "07/05/2025",
-//        "updatedAt": "07/05/2025"
-//     },
-//     {
-//         "id": 2,
-//         "image": "https://cdn.pixabay.com/photo/2020/04/19/02/20/control-5061603_1280.jpg",
-//         "name": "PlayStation 5",
-//         "description": "Vero sequi laboriosam recusandae facere debitis beatae obcaecati.",
-//         "price": "R$ 23.99",
-//         "createdAt": "07/05/2025",
-//         "updatedAt": "07/05/2025"
-//      },
-//      {
-//         "id": 3,
-//         "image": "https://cdn.pixabay.com/photo/2020/04/19/02/20/control-5061603_1280.jpg",
-//         "name": "Nintendo Switch",
-//         "description": "Vero sequi laboriosam recusandae facere debitis beatae obcaecati.",
-//         "price": "R$ 23.99",
-//         "createdAt": "07/05/2025",
-//         "updatedAt": "07/05/2025"
-//      },
-//      {
-//         "id": 4,
-//         "image": "https://cdn.pixabay.com/photo/2020/04/19/02/20/control-5061603_1280.jpg",
-//         "name": "PlayStation 5",
-//         "description": "Vero sequi laboriosam recusandae facere debitis beatae obcaecati.",
-//         "price": "R$ 23.99",
-//         "createdAt": "07/05/2025",
-//         "updatedAt": "07/05/2025"
-//      },
-//      {
-//         "id": 5,
-//         "image": "https://cdn.pixabay.com/photo/2020/04/19/02/20/control-5061603_1280.jpg",
-//         "name": "Levy",
-//         "description": "Vero sequi laboriosam recusandae facere debitis beatae obcaecati.",
-//         "price": "R$ 23.99",
-//         "createdAt": "07/05/2025",
-//         "updatedAt": "07/05/2025"
-//      },
-// ];
+/*
+// Atualiza a página a cada N segundos
+setInterval(() => {
+    console.log("Buenas");
+    getProducts();
+}, 3000);   // 1 segundo == 1000 mili
+*/
 
 // Busca os produtos na API
 function getProducts() {
@@ -63,7 +20,7 @@ function getProducts() {
     .then(data => {
         const productList = [];
         // Adiciona os objetos no array
-        productList.push(... data);
+        productList.push(... data); // Spread operator
         listProducts(productList);
     });
 }
@@ -71,6 +28,7 @@ function getProducts() {
 // Carrega os Produtos na tela
 function listProducts(productList) {
     const sectionProducts = document.querySelector("#sectionProducts");
+    sectionProducts.innerHTML = '';
 
     productList.forEach((product) => {
         // Cria o article (Card)
@@ -109,7 +67,9 @@ function listProducts(productList) {
         card.appendChild(productAction);
 
             const h3 = document.createElement('h3');
-            h3.textContent = product.price;
+            h3.textContent = product.price.toLocaleString("pt-br", {
+                style: "currency", currency: "BRL"
+            });
             productAction.appendChild(h3);
 
             const btnAddCart = document.createElement('button');
@@ -119,5 +79,5 @@ function listProducts(productList) {
     });
 }
 
-getProducts();
+// getProducts();
 // listProducts();
