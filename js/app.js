@@ -21,6 +21,7 @@ function getProducts() {
         const productList = [];
         // Adiciona os objetos no array
         productList.push(... data); // Spread operator
+        // Envia os dados para listar na página
         listProducts(productList);
     });
 }
@@ -53,9 +54,9 @@ function listProducts(productList) {
         productInfo.setAttribute('class', 'product-info');
         card.appendChild(productInfo);
 
-            const h2 = document.createElement('h2');
-            h2.textContent = product.name;
-            productInfo.appendChild(h2);
+            const nome = document.createElement('h3');
+            nome.textContent = product.name;
+            productInfo.appendChild(nome);
 
             const p = document.createElement('p');
             p.textContent = product.description;
@@ -79,5 +80,5 @@ function listProducts(productList) {
     });
 }
 
-// getProducts();
+getProducts();
 // listProducts();
