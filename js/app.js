@@ -16,14 +16,24 @@ function getProducts() {
     fetch(linkAPI)
     // Se tiver sucesso, converte o retorno (response) para JSON
     .then((response) => response.json())
-    // Percorre a lista de produtos
+    // Preenche a lista de produtos
     .then(data => {
         const productList = [];
         // Adiciona os objetos no array
         productList.push(... data); // Spread operator
         // Envia os dados para listar na página
         listProducts(productList);
+    })
+    .catch(error => {
+        console.log("Erro ao carregar os produtos: " + error);
+    })
+    .finally(() => {
+        console.log("Busca finalizada");
     });
+    
+
+    // Vamos fazer a mesma requisição, agora utilizano Axios (módulo externo)
+    // https://axios-http.com/ptbr/
 }
 
 // Carrega os Produtos na tela
@@ -82,3 +92,63 @@ function listProducts(productList) {
 
 getProducts();
 // listProducts();
+
+
+// --- Exemplos de Promises ---
+// const esperar = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+// esperar(3000).then(() => console.log('Passaram-se 2 segundos.'));
+
+// esperar(1000)
+//  .then(() => {
+//  console.log('Passou 1 segundo.');
+//  return esperar(2000);
+//  })
+//  .then(() => {
+//  console.log('Passaram-se mais 2 segundos.');
+//  });
+
+// Promise.all([esperar(1000), esperar(2000), esperar(3000)])
+//  .then(() => {
+//  console.log('Todas as Promises foram concluídas.');
+//  });
+
+// Promise.race([esperar(1000), esperar(2000), esperar(3000)])
+//  .then(() => {
+//  console.log('A primeira Promise foi concluída.');
+//  });
+
+// --- Fetch com method ---
+async function get(id = "") {
+    console.log(id);
+    
+    const url = "https://67620a7446efb3732373870b.mockapi.io/api/product/" + id;
+    const option = {
+        // method: "POST",
+        // body: {
+        //     "image": "link da imagem",
+        //     "name": "Nome do Produto",
+        //     "description": "Descrição do produto",
+        //     "price": 23.99
+        // }
+        method: "DELETE"
+    };
+
+    await fetch(url, option)
+    .then(() => {
+        console.log("Produto excluído");
+        location.reload();
+    })
+}
+
+// get(15);
+
+// Adicionar Produto no Carrinho de Compras
+function addCart(id) {
+    // console.log(id);
+
+    // TESTE
+    get(id);
+    // location.reload();
+}
+
+// --- Acesso aos Endpoints ---
